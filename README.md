@@ -1,5 +1,33 @@
 # New_Exosearch_rerun
 
+## File Structure
+
+```
+tess_transit_rerun/
+├── year5_pipeline.ipynb          # Main pipeline notebook
+├── README.md                     # This file
+├── NOTES.md                      # Pipeline decisions and known issues
+└── data/                         # (on Treefort, not in repo)
+    
+TESS/ (on Treefort at ~/TESS/)
+├── data/
+│   ├── light_curves/
+│   │   ├── info/
+│   │   │   ├── all_targets_S061_v1.txt   # sector target lists (from MIT)
+│   │   │   ├── all_targets_S062_v1.txt
+│   │   │   ├── ...
+│   │   │   ├── all_targets_S069_v1.txt
+│   │   │   ├── persistant_tids_y5.txt    # TICs in all 9 sectors
+│   │   │   └── cbvs/                     # CBV download scripts + FITS files
+│   │   └── {TIC_ID}.p                    # preprocessed light curve pickles
+│   ├── priors/
+│   │   └── {sector}/
+│   │       └── evec_matrix_{sector}_{cam}_{ccd}.p
+│   └── output/
+│       └── {TIC_ID}_results.p            # FFT search results
+```
+
+
 # TESS Exoplanet Transit Search Pipeline
 
 ## Setup & Data Download
