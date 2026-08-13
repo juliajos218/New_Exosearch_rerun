@@ -213,8 +213,7 @@ Department of Astronomy, advised by Dr. Jamila Taaki.
 The following scripts were written or provided by Dr. Taaki and adapted for this project:
 - `vector_matrix.py` — formats CBV FITS files into evec matrices for systematics detrending
 - `systematics_cov.py` — computes systematics covariance coefficients per sector/cam/ccd
-- `download_lc_y5.py` — downloads and preprocesses TESS light curves from MAST
-- `info.py` / `info_y5.py` — sector cadence bounds and configuration
+- `download_lc_y5.py` — adapted from 'download_lc.py', downloads and preprocesses TESS light curves from MAST
 
 The vetting tests (centroid motion test and even-odd phase test) were developed based on
 ideas from the EXOMINER++ framework and adapted for this data format.
