@@ -41,7 +41,7 @@ python filter_snr.py
 
 
 
-# Pipeline Notes & Decision Log
+# FIRST RUN (year 6) - Pipeline Notes & Decision Log
 
 ## Data
 - Sectors 73-83 (TESS Year 6, Northern CVZ)
