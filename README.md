@@ -200,7 +200,7 @@ Inspect phase-folded lightcurves for planet candidates.
 # SECOND RUN (Year 5) — Pipeline Notes & Decision Log
 
 ## Data
-- Sectors 61-69 (TESS Year 5, Northern CVZ)
+- Sectors 61-69 (TESS Year 5, Southern CVZ)
 - 1299 persistent TIC IDs observed in all 9 sectors
 - 2-minute cadence light curves downloaded from MAST via SPOC
 - Cadence bounds derived from CBV FITS files
