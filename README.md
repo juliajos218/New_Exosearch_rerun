@@ -18,6 +18,7 @@ TESS/ (on Treefort at ~/TESS/)
 │   │   │   ├── ...
 │   │   │   ├── all_targets_S069_v1.txt
 │   │   │   ├── persistant_tids_y5.txt    # TICs in all 9 sectors
+│   │   │   ├── info_y5.py                # year 5 cadence bounds and sector config
 │   │   │   └── cbvs/                     # CBV download scripts + FITS files
 │   │   └── {TIC_ID}.p                    # preprocessed light curve pickles
 │   ├── priors/
@@ -27,9 +28,9 @@ TESS/ (on Treefort at ~/TESS/)
 │       └── {TIC_ID}_results.p            # FFT search results
 ├──code/
 │   ├──preprocess/
-│   ├──vector_matrix.py                   # generates evec matrices from CBV files
-│   ├──download_lc_y5.py                  # downloads and preprocesses lightcirves
-│   ├──systematics_cov.py                 # computes systematics covariance 
+│   │    ├──vector_matrix.py                   # generates evec matrices from CBV files
+│   │    ├──download_lc_y5.py                  # downloads and preprocesses lightcirves
+│   │    ├──systematics_cov.py                 # computes systematics covariance 
 
 ```
 
@@ -63,7 +64,7 @@ for s in $(seq -f "%02g" 61 69); do
 done
 ```
 
-### Step 3b — Run CBV shell scripts to download FITS files
+### Step 4 — Run CBV shell scripts to download FITS files
 ```bash
 for s in $(seq -f "%02g" 61 69); do
     echo "Downloading CBVs for sector $s..."
@@ -74,7 +75,13 @@ done
 
 ---
 
-### Step 4 — Generate evec matrices from CBV files
+### Step 5 — Get cadence bounds from CBV FITS files
+Run `year5_pipeline.ipynb` Step 5 cell.
+**Output:** cadence bounds for sectors 61-69 saved to `info_y5.py`
+
+---
+
+### Step 6 — Generate evec matrices from CBV files
 ```bash
 python3 ~/TESS/code/preprocess/vector_matrix.py
 ```
@@ -82,7 +89,7 @@ python3 ~/TESS/code/preprocess/vector_matrix.py
 
 ---
 
-### Step 5 — Download and preprocess light curves
+### Step 7 — Download and preprocess light curves
 ```bash
 nohup python3 ~/TESS/code/preprocess/download_lc_y5.py > download_lc_y5.log 2>&1 &
 tail -f download_lc_y5.log
@@ -91,24 +98,22 @@ tail -f download_lc_y5.log
 
 ---
 
-### Step 6 — Run FFT search
+### Step 8 — Run FFT search
 ...
 
 ---
 
-### Step 7 — Apply SNR filter
+### Step 9 — Apply SNR filter
 ```bash
 python3 filter_snr.py
 ```
 
----
-
-### Step 8 — Run vetting
+### Step 10 — Run vetting
 Run vetting notebook with updated paths for year 5.
 
 ---
 
-### Step 9 — Manual inspection
+### Step 11 — Manual inspection
 Inspect phase-folded lightcurves for planet candidates.
 
 ---
