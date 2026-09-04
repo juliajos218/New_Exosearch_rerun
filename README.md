@@ -15,7 +15,7 @@ tess_transit_rerun/ (GitHub)
 ├── info/
 │   └── info_y5.py                    # year 5 cadence bounds and sector config
 ├── py_files/
-│   └── multi_target_run_y5.py        # FFT search script for year 5 (adapted from Dr. Taaki)
+│   └── multi_target_run_y5.py        # FFT search script for year 5 (FFR search method from Dr. Taaki)
 └── sh_files/
     └── download_lists.sh             # downloads sector target lists from MIT
 ```
