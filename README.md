@@ -75,10 +75,48 @@ done
 
 ---
 
-### Step 5 — Get cadence bounds from CBV FITS files
+### Step 5a — Get cadence bounds from CBV FITS files
 Run `year5_pipeline.ipynb` Step 5 cell.
 **Output:** cadence bounds for sectors 61-69 saved to `info_y5.py`
 
+---
+
+### Step 5b — Create info file for your sectors
+Create a new `info_y5.py` file in `~/TESS/data/light_curves/info/` with the cadence bounds from Step 5:
+
+```python
+year = 5
+sectors = [61, 69]
+cadence_bounds = {
+    61: (1249444, 1267755),
+    62: (1267906, 1286422),
+    63: (1286574, 1305680),
+    64: (1305831, 1325215),
+    65: (1325721, 1345805),
+    66: (1346554, 1367260),
+    67: (1367411, 1387397),
+    68: (1387549, 1407372),
+    69: (1407524, 1426092)
+}
+```
+
+Then update `~/tess_transit/data/loader.py` to import from your new info file:
+```bash
+nano ~/tess_transit/data/loader.py
+```
+Change:
+```python
+from info import cadence_bounds
+```
+To:
+```python
+import sys
+sys.path.insert(0, '/home/juliajos/TESS/data/light_curves/info')
+from info_y5 import cadence_bounds
+```
+**Note:** This step is required — if skipped every target will fail with `Sector X not in cadence_bounds`.
+
+---
 ---
 
 ### Step 6 — Generate evec matrices from CBV files
