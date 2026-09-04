@@ -27,9 +27,9 @@ TESS/ (on Treefort at ~/TESS/)
 │       └── {TIC_ID}_results.p            # FFT search results (SNR filtered)
 └── code/
     └── preprocess/
-        ├── vector_matrix.py              # generates evec matrices from CBV files
+        ├── vector_matrix.py              # generates evec matrices from CBV files (Dr. Taaki)
         ├── download_lc_y5.py             # downloads and preprocesses light curves
-        └── systematics_cov.py            # computes systematics covariance
+        └── systematics_cov.py            # computes systematics covariance (Dr. Taaki)
 
 tess_transit/ (on Treefort at ~/tess_transit/)
 ├── multi_target_run_y5.py        # FFT search script for year 5 (FFT search script by Dr. Taaki)
