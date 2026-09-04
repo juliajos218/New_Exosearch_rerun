@@ -1,6 +1,26 @@
 # New_Exosearch_rerun
 
-## File Structure
+## GitHub Repo Structure
+Scripts and notebooks only — no data files (data lives on Treefort)
+
+```
+tess_transit_rerun/ (GitHub)
+├── README.md                         # This file
+├── year5_pipeline.ipynb              # Main pipeline notebook
+├── current_vetting_and_p...          # Vetting notebook
+├── code/
+│   └── preprocess/
+│       ├── download_lc_y5.py         # downloads and preprocesses light curves (adapted from Dr. Taaki)
+│       └── vector_matrix.py          # generates evec matrices from CBV files (Dr. Taaki)
+├── info/
+│   └── info_y5.py                    # year 5 cadence bounds and sector config
+├── py_files/
+│   └── multi_target_run_y5.py        # FFT search script for year 5 (adapted from Dr. Taaki)
+└── sh_files/
+    └── download_lists.sh             # downloads sector target lists from MIT
+```
+
+## TreeFort File Structure
 
 ```
 tess_transit_rerun/
