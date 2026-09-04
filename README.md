@@ -98,9 +98,15 @@ tail -f download_lc_y5.log
 
 ---
 
-### Step 8 — Run FFT search
-...
-
+### Step 8 — Run FFT search with inline SNR filter
+```bash
+nohup python3 ~/tess_transit/multi_target_run_y5.py > multi_target_run_y5.log 2>&1 &
+tail -f multi_target_run_y5.log
+```
+**Output:** `{TIC_ID}_results.p` saved to `~/tess_transit/data/output_y5/`
+**Note:** SNR ≥ 6 filter applied inline to keep file sizes ~80MB instead of ~2.5GB
+**Estimated time:** 10-15 hours for 1299 targets
+**Estimated storage:** ~104GB (vs ~3.25TB unfiltered)
 ---
 
 ### Step 9 — Apply SNR filter
