@@ -172,17 +172,12 @@ tail -f multi_target_run_y5.log
 **Estimated storage:** ~104GB (vs ~3.25TB unfiltered)
 ---
 
-### Step 9 — Apply SNR filter
-```bash
-python3 filter_snr.py
-```
-
-### Step 10 — Run vetting
+### Step 9 — Run vetting
 Run vetting notebook with updated paths for year 5.
 
 ---
 
-### Step 11 — Manual inspection
+### Step 10 — Manual inspection
 Inspect phase-folded lightcurves for planet candidates.
 
 ---
