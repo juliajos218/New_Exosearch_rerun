@@ -28,7 +28,7 @@ TESS/ (on Treefort at ~/TESS/)
 └── code/
     └── preprocess/
         ├── vector_matrix.py              # generates evec matrices from CBV files (Dr. Taaki)
-        ├── download_lc_y5.py             # downloads and preprocesses light curves
+        ├── download_lc_y5.py             # downloads and preprocesses light curves (Dr. Taaki with personal edits)
         └── systematics_cov.py            # computes systematics covariance (Dr. Taaki)
 
 tess_transit/ (on Treefort at ~/tess_transit/)
