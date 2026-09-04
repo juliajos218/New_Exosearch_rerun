@@ -6,31 +6,36 @@
 tess_transit_rerun/
 ├── year5_pipeline.ipynb          # Main pipeline notebook
 ├── README.md                     # This file
-├── NOTES.md                      # Pipeline decisions and known issues
-└── data/                         # (on Treefort, not in repo)
-    
+└── NOTES.md                      # Pipeline decisions and known issues
+
 TESS/ (on Treefort at ~/TESS/)
 ├── data/
 │   ├── light_curves/
 │   │   ├── info/
 │   │   │   ├── all_targets_S061_v1.txt   # sector target lists (from MIT)
-│   │   │   ├── all_targets_S062_v1.txt
 │   │   │   ├── ...
 │   │   │   ├── all_targets_S069_v1.txt
-│   │   │   ├── persistant_tids_y5.txt    # TICs in all 9 sectors
+│   │   │   ├── persistant_tids_y5.txt    # TICs persistent across all 9 sectors
 │   │   │   ├── info_y5.py                # year 5 cadence bounds and sector config
 │   │   │   └── cbvs/                     # CBV download scripts + FITS files
-│   │   └── {TIC_ID}.p                    # preprocessed light curve pickles
+│   │   └── lightcurves_y5/
+│   │       └── {TIC_ID}.p                # preprocessed light curve pickles
 │   ├── priors/
 │   │   └── {sector}/
 │   │       └── evec_matrix_{sector}_{cam}_{ccd}.p
-│   └── output/
-│       └── {TIC_ID}_results.p            # FFT search results
-├──code/
-│   ├──preprocess/
-│   │    ├──vector_matrix.py                   # generates evec matrices from CBV files
-│   │    ├──download_lc_y5.py                  # downloads and preprocesses lightcirves
-│   │    ├──systematics_cov.py                 # computes systematics covariance 
+│   └── output_y5/
+│       └── {TIC_ID}_results.p            # FFT search results (SNR filtered)
+└── code/
+    └── preprocess/
+        ├── vector_matrix.py              # generates evec matrices from CBV files
+        ├── download_lc_y5.py             # downloads and preprocesses light curves
+        └── systematics_cov.py            # computes systematics covariance
+
+tess_transit/ (on Treefort at ~/tess_transit/)
+├── multi_target_run_y5.py        # FFT search script for year 5 (FFT search script by Dr. Taaki)
+├── data/
+│   └── loader.py                 # updated to import from info_y5.py
+└── search.py                     # FFT search pipeline (Dr. Taaki)
 
 ```
 
