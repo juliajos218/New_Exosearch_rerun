@@ -1,5 +1,12 @@
 # New_Exosearch_rerun
 
+## Required Software
+- astropy
+- numpy
+- scipy
+- matplotlib
+- Python 3.12.3
+
 ## GitHub Repo Structure
 Scripts and notebooks only — no data files (data lives on Treefort)
 
@@ -15,7 +22,8 @@ tess_transit_rerun/ (GitHub)
 ├── info/
 │   └── info_y5.py                    # year 5 cadence bounds and sector config
 ├── py_files/
-│   └── multi_target_run_y5.py        # FFT search script for year 5 (FFR search method from Dr. Taaki)
+│   └── multi_target_run_y5.py        # FFT search script for year 5 (FFT search method from Dr. Taaki)
+│   └── loader.py                  
 └── sh_files/
     └── download_lists.sh             # downloads sector target lists from MIT
 ```
@@ -108,6 +116,7 @@ Run `year5_pipeline.ipynb` Step 5 cell.
 
 ### Step 5b — Create info file for your sectors
 Create a new `info_y5.py` file in `~/TESS/data/light_curves/info/` with the cadence bounds from Step 5:
+**Note:** Replace `juliajos` with your own Treefort username in the path.
 
 ```python
 year = 5
@@ -134,6 +143,7 @@ Change:
 from info import cadence_bounds
 ```
 To:
+
 ```python
 import sys
 sys.path.insert(0, '/home/juliajos/TESS/data/light_curves/info')
@@ -145,6 +155,7 @@ from info_y5 import cadence_bounds
 ---
 
 ### Step 6 — Generate evec matrices from CBV files
+
 ```bash
 python3 ~/TESS/code/preprocess/vector_matrix.py
 ```
@@ -173,8 +184,10 @@ tail -f multi_target_run_y5.log
 ---
 
 ### Step 9 — Run vetting
-Run vetting notebook with updated paths for year 5.
-
+Update these paths in the vetting notebook:
+- RESULTS_DIR = "~/tess_transit/data/output_y5/"
+- LAB_DIR = "~/TESS/data/lightcurves_y5/"
+- SECTORS = [61, 62, 63, 64, 65, 66, 67, 68, 69]
 ---
 
 ### Step 10 — Manual inspection
@@ -273,6 +286,7 @@ Inspect phase-folded lightcurves for planet candidates.
 - In progress
 
 ---
+
 
 ## Credits & Acknowledgments
 
