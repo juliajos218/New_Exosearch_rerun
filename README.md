@@ -13,17 +13,21 @@ Scripts and notebooks only — no data files (data lives on Treefort)
 ```
 tess_transit_rerun/ (GitHub)
 ├── README.md                         # This file
-├── year5_pipeline.ipynb              # Main pipeline notebook
-├── current_vetting_and_p...          # Vetting notebook
+├── TUTORIAL
+│   └──  year5_pipeline.ipynb              # Main pipeline notebook
 ├── code/
 │   └── preprocess/
 │       ├── download_lc_y5.py         # downloads and preprocesses light curves (adapted from Dr. Taaki)
 │       └── vector_matrix.py          # generates evec matrices from CBV files (Dr. Taaki)
+│   └── vetting/
+│   │   └── images_y5.py              # generates diagnostic plots for the targets that pass vetting
+│   │   └── vetting_y5.py             # runs the vetting on all y5 targets that passed through the FFT search
 ├── info/
 │   └── info_y5.py                    # year 5 cadence bounds and sector config
 ├── py_files/
 │   └── multi_target_run_y5.py        # FFT search script for year 5 (FFT search method from Dr. Taaki)
-│   └── loader.py                  
+│   └── loader.py
+│   └── vector_matrix.py              # generates the vector matrices from the CBV's used in the FFT search (Dr. Taaki)                
 └── sh_files/
     └── download_lists.sh             # downloads sector target lists from MIT
 ```
