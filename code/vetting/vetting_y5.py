@@ -172,6 +172,7 @@ def main():
 
     for TARGET_ID in tids:
         TARGET_ID = str(TARGET_ID)
+        print(f"[{TARGET_ID}] starting...", flush=True)
         out_path = os.path.join(VETTING_DIR, f"{TARGET_ID}_vetting.p")
 
         if os.path.exists(out_path):
@@ -216,10 +217,7 @@ def main():
             continue
 
         sector61_start_cad = np.asarray(time_data[SECTORS[0]])[0]
-        det_t0_btjd = epoch_to_btjd(
-            sector61_start_cad + best_real['epoch_cadences'],
-            best_real['duration']
-        )
+        det_t0_btjd = epoch_to_btjd(best_real['epoch_cadences'], best_real['duration'])
 
         all_flux_raw = np.concatenate([np.asarray(lc_data[s]) for s in SECTORS if s in lc_data])
         norm_factor  = float(np.nanmedian(all_flux_raw))
@@ -336,9 +334,9 @@ def main():
             verdict = 'FAIL_CM'
         elif combined_eop_p < EOP_FAIL_ALPHA:
             verdict = 'FAIL_EOP'
-        elif score >= SCORE_FAIL_ALPHA:
+        elif score < SCORE_WARN_ALPHA:
             verdict = 'FAIL_SCORE'
-        elif score >= SCORE_WARN_ALPHA:
+        elif score < SCORE_FAIL_ALPHA:
             verdict = 'WARN'
         else:
             verdict = 'PASS'
