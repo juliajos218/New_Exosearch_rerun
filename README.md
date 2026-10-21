@@ -59,9 +59,17 @@ TESS/ (on Treefort at ~/TESS/)
 │       └── {TIC_ID}_results.p            # FFT search results (SNR filtered)
 └── code/
     └── preprocess/
-        ├── vector_matrix.py              # generates evec matrices from CBV files (Dr. Taaki)
-        ├── download_lc_y5.py             # downloads and preprocesses light curves (Dr. Taaki with personal edits)
-        └── systematics_cov.py            # computes systematics covariance (Dr. Taaki)
+│       ├── vector_matrix.py              # generates evec matrices from CBV files (Dr. Taaki)
+│       ├── download_lc_y5.py             # downloads and preprocesses light curves (Dr. Taaki with personal edits)
+│       └── systematics_cov.py            # computes systematics covariance (Dr. Taaki)
+└── tess_transit/
+    ├── search.py
+    ├── fft_detect.py
+    ├── gather.py
+    ├── combine.py
+    ├── loader.py
+    ├── lightcurve.py
+    ├── transit.py
 
 tess_transit/ (on Treefort at ~/tess_transit/)
 ├── multi_target_run_y5.py        # FFT search script for year 5 (FFT search script by Dr. Taaki)
@@ -192,6 +200,9 @@ Update these paths in the vetting notebook:
 - RESULTS_DIR = "~/tess_transit/data/output_y5/"
 - LAB_DIR = "~/TESS/data/lightcurves_y5/"
 - SECTORS = [61, 62, 63, 64, 65, 66, 67, 68, 69]
+- Vetting Thresholds Changed:
+    - CM_FAIL_ALPHA = 0.05
+    - EOP_FAIL_ALPHA = 0.05
 ---
 
 ### Step 10 — Manual inspection
@@ -238,6 +249,10 @@ Inspect phase-folded lightcurves for planet candidates.
 - Targets with Rp/Rs > 0.15 flagged as likely false positives
 
 ## Known Issues
+### t0 Bug (Year 5)
+- Original vetting_y5.py incorrectly added sector61_start_cad to epoch_cadences
+- Fixed: use epoch_to_btjd(epoch_cadences, duration) directly — no sector offset
+- All vetting and diagnostic images regenerated after fix
 
 ### Sector 78 Outliers
 - Many targets have a single outlying cadence in sector 78 that shifts the centroid
@@ -267,9 +282,12 @@ Inspect phase-folded lightcurves for planet candidates.
 - For BJD midpoint (ExoFOP submission): use t0_btjd + 2457000
 
 ## Results Summary
-- 1011 targets searched
-- 678 passed SNR ≥ 6 filter
-- 160 passed automated vetting
+- 1011 targets searched for year 6
+- 1299 targets searched for year 5 
+- 328 passed automated vetting for year 5
+- 970 failed vetting for year 5
+- 678 passed SNR ≥ 6 filter for year 6
+- 160 passed automated vetting for year 6 
 - ~22 good candidates after manual inspection
 - 7 strong detections with depth SNR > 3 and Rp/Rs < 15%
 - 3 confirmed planets in sample (TOI-2071b, TOI-1291b, TOI-1752b/c)
